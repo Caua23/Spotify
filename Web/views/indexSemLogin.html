@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/index/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.scdn.co/i/_global/favicon.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Kanit:wght@700&display=swap" rel="stylesheet">
+
+    <title>Sound Pure</title>
+</head>
+
+<body onload="carregar()">
+    <aside>
+
+        <nav class="navegacao">
+            <a href="/Sucess">
+                <img width="25px" height="25px" src="Assets/bxs-home.png" alt="">
+            Início
+            </a>
+            <br>
+            <br>
+            <a href="">
+                <img width="25px" height="25px" src="Assets/bx-search-alt-2.png" alt="" >
+                Buscar
+            </a>
+        </nav>
+    
+    
+        <section>
+            <div id="sectionPlaylist">
+                <button id="library">
+                    <img src="Assets/bx-library.png" alt="">
+                </button>
+                <p>Sua Biblioteca</p>
+                <button id="plus">
+                    <img src="Assets/bx-plus.png" alt="">
+                </button>
+                
+            </div>
+            <div id="pesquisa">
+                <button onclick="toggleSearch()" id="searchPlaylist">
+                    <img width="23px" height="23px" src="Assets/bx-search-alt-2.png" id="imgPesquisa" alt="">
+                </button>
+    
+                <div class="classPesquisar" id="divPesquisar">
+                    <input type="text" name="" placeholder="Pesquisar" id="pesquisar">
+                </div>
+            </div>
+            
+                <select name="playlist" size="10" id="playlist"></select>
+            
+        </section>
+    </aside>
+
+    <header>
+        <div class="headerButtons">
+            <button id="planos">
+                <a
+                    href="https://www.spotify.com/br-pt/premium/?utm_source=app&utm_medium=desktop&utm_campaign=upgrade&ref=web_loggedin_upgrade_button">
+                    <p>Ver planos premium</p>
+                </a>
+            </button>
+    
+            <button id="download">
+                <img src="Assets/bxs-download.png" alt="">
+                <p>
+                    Instalar Aplicativo <br> (Em Breve!!!)
+                </p>
+            </button>
+    
+            <button id="bell">
+                <a href="">
+                    <img src="Assets/bxs-bell.png" alt="">
+                </a>
+            </button>
+        </div>
+        <div id="salutation">
+            
+        </div>
+        <div class="visualPlaylist">
+
+        </div>
+    </header>
+
+    <main>
+        <div id="name">
+
+        </div>
+    </main>
+
+    <footer>
+        <div id="music">
+        </div>
+    <div id="allFooter">
+        <div id="mainFooter">
+            <button id="shuffle" >
+                <i class='bx bx-shuffle' style='color:#ffffff'  ></i>
+            </button>
+
+            <button id="previous">
+                <i class='bx bx-skip-previous' style= 'color:#ffffff' ></i>
+            </button>
+            <button id="play">
+                <i class='bx bx-play-circle' id="PlayPause" style='color:#ffffff;'  ></i>
+                <!--<i class='bx bx-pause-circle' style='color:#ffffff'  ></i>-->
+            </button>
+            <button id="next">
+                <i class='bx bx-skip-next' style='color:#ffffff' ></i>
+            </button>
+            
+            <button id="reload">
+                <i class='bx bx-loader-circle' style="color: #ffffff;"></i>
+                <!--<i class='bx bx-loader-circle' style='color:#c90000'  ></i>-->
+            </button>
+        
+            <div id="endFooter">
+                <img src="Assets/bx-volume-full.png"> 
+                <input type="range" min="0" max="100"  value="100" name="rangeEnd" id="rangeEnd">
+            </div>
+        </div>
+        <div class="progressRange">
+            
+            <input type="range" min="0" max="100" value="0" name="rangeSound" id="rangeSound">
+            
+        </div>
+
+    </div>
+    </footer>
+
+
+
+    <!--
+        <img height="30px" src="Assets/Spotify_logo_without_text.svg.png" alt="">
+    
+        <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    -->
+    <script src="/index/index.js"></script>
+</body>
+
+</html>
