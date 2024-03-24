@@ -10,13 +10,17 @@ body {
     color: white;
     display: flex;
     font-family: 'Montserrat';
+    user-select: none;
 }
+
+
+
+
 
 button {
     background: none;
     border: none;
     cursor: pointer;
-
 }
 
 a {
@@ -59,7 +63,7 @@ select:focus {
     width: 300px;
     height: 140px;
     border-radius: 15px;
-    display: block;
+    display: inline-block;
     padding-top: 30px;
     text-align: start;
     margin: 10px;
@@ -67,11 +71,12 @@ select:focus {
 
 .navegacao a {
     font-size: 15pt;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
     font-family: 'Montserrat';
     margin: 20px;
     padding: 20px;
+    cursor: pointer;
 }
 
 section {
@@ -123,8 +128,10 @@ section p {
 
 
 #divPesquisar input[type='text']{
+    font-family: 'Montserrat';
+    border-radius: 5px;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #970202;
     background: none;
     width: 150px;
     text-align: start;
@@ -147,6 +154,9 @@ section p {
 
 #pesquisar{
     color: white;
+}
+.sumir{
+    display: none;
 }
 
 .On2{
@@ -193,32 +203,39 @@ body::-webkit-scrollbar-thumb:hover {
     /* Cor ao passar o mouse sobre o indicador de rolagem */
 }
 
-#mainFooter {
-    display: flex;
-    justify-content: space-around;
-}
-
-#endFooter {
-    margin-left: 350px;
-    margin-top: 20px;
-    display: flex;
-
-}
 
 footer {
-    margin-top: 550px;
+    margin-top: 560px;
     position: fixed;
+    width: 1325px;
+    
+}
+
+#mainFooter {
+    display: flex;
+    
+}
+#buttonsFooters{
     margin-left: 550px;
 }
 
-.progressRange{
-    margin: auto;
-    margin-top: 15px;
+#endFooter {
+    display: flex;
+    align-items: center;
+    margin-left: 340px;
+
 }
-
-
-#rangeSound{
-    margin-top: 10px;
+.progressRange{
+    display: flex;
+    margin-top: 5px;
+   align-items: center;
+   justify-content: center;
+}
+#init{
+    margin-right: 120px;
+}
+#end{
+    margin-left: 20px;
 }
 
 input[type='range'] {
@@ -231,12 +248,15 @@ input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
 }
 
+#rangeSound{
+    background: linear-gradient(90deg, #4D4D4D 60%, #4D4D4D 60%);
+    border-radius: 5px;
+}
+
 #rangeSound::-webkit-slider-runnable-track {
     width: 200px;
     height: 5px;
-    background-color: #4D4D4D;
-    border-radius: 5px;
-
+    
 }
 
 #rangeSound::-webkit-slider-thumb {
@@ -306,7 +326,7 @@ footer button i {
 }
 
 i{
-    font-size: 34px !important;
+    font-size: 32px !important;
 }
 
 header {
@@ -384,6 +404,8 @@ header button p {
     margin-top: 20px;
     border-radius: 60px;
     padding-top: 2px;
+    position: relative;
+    
 }
 
 
@@ -391,14 +413,67 @@ header button p {
     height: 25px;
     width: 25px;
     border-radius: 15px;
+    
+}
+#menu{
+    height: auto;
+    color: white;
+    margin-top: 20px;
+    position: absolute;
+    right: 7%;
+    cursor: default;
+}
+#menu ul{
+    width: 300px;
+    list-style:none;
+    border:1px solid #282828;
+    background-color: #282828;
+    float:left;
+    padding: 4px;
+    list-style: none;
+    border-radius: 5px;
+}
+#listaMenu li{
+    font-size: 10pt;
+    text-align: start;
+    cursor: pointer;
+    position: relative;
+    padding: 20px;
+    border-radius: 5px;
+}
+#listaMenu hr{
+    width: 95%;
+    margin: auto;
+    margin-top: 1px;
+    top: -10px;
+    height:  1px;
+    color: white;
+    opacity: 20%;
+}
+#listaMenu li a{
+    display: flex;
+    justify-content: space-between;
+}
+#bx-add-to-queue{
+    font-size: 19px !important;
 }
 
-
 main {
-    background-color: #121212;
+    background: linear-gradient(#481414 0%, #121212 70%);
     width: 95%;
     border-radius: 15px;
     margin: 3px;
     margin-top: 10px;
 }
 
+#buttonsFoters{
+    transition: transform 0.3s ease;
+}
+
+#buttonsFooters button:hover{
+    transform: scale(1.2);
+}
+
+#listaMenu li:hover{
+    background-color: #3F3F3F;
+}

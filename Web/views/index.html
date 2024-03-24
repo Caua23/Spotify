@@ -25,16 +25,25 @@
     <aside>
 
         <nav class="navegacao">
-            <a href="/Sucess">
-                <img width="25px" height="25px" src="Assets/bxs-home.png" alt="">
-            Início
-            </a>
+            <button>
+                <a href="/Sucess" id="home">
+                    <img width="25px" height="25px" src="Assets/bxs-home.png" alt="">
+                    Início
+                </a>
+            </button>
             <br>
             <br>
-            <a href="">
-                <img width="25px" height="25px" src="Assets/bx-search-alt-2.png" alt="" >
-                Buscar
-            </a>
+            <button>
+                <a id="navPesquisa">
+                    <img width="25px" height="25px" src="Assets/bx-search-alt-2.png" alt="" >
+                    Buscar
+                </a>
+            </button>
+                
+            
+           
+            
+            
         </nav>
     
     
@@ -55,7 +64,7 @@
                 </button>
     
                 <div class="classPesquisar" id="divPesquisar">
-                    <input type="text" name="" placeholder="Pesquisar" id="pesquisar">
+                    <input type="text" class="sumir" placeholder="Pesquisar" id="pesquisar">
                 </div>
             </div>
             
@@ -86,8 +95,33 @@
                 </a>
             </button>
 
-            <button id="account"> 
+            <button id="account" > 
                 <img height="25px" id="imgAccount" src="" alt="">
+                <div class="sumir" id="menu">
+                    <ul id="listaMenu">
+                        <li>
+                            <a href="/account/overview">
+                                Conta <i class='bx bx-add-to-queue' id="bx-add-to-queue" style='color:#ffffff'  ></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/profile">
+                                Perfil <i class='bx bx-add-to-queue' id="bx-add-to-queue" style='color:#ffffff'  ></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Cfg">
+                                Configurações 
+                            </a>
+                        </li>
+                        <hr>
+                        <li>
+                            <a href="/logout">
+                                Sair 
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </button>
         </div>
         
@@ -108,40 +142,51 @@
     <footer>
         <div id="music">
         </div>
-    <div id="allFooter">
+    
         <div id="mainFooter">
-            <button id="shuffle" >
-                <i class='bx bx-shuffle' style='color:#ffffff'  ></i>
-            </button>
+            <div id="buttonsFooters">
 
-            <button id="previous">
-                <i class='bx bx-skip-previous' style= 'color:#ffffff' ></i>
-            </button>
-            <button id="play">
-                <i class='bx bx-play-circle' id="PlayPause" style='color:#ffffff;'  ></i>
-                <!--<i class='bx bx-pause-circle' style='color:#ffffff'  ></i>-->
-            </button>
-            <button id="next">
-                <i class='bx bx-skip-next' style='color:#ffffff' ></i>
-            </button>
+                <button id="shuffle" >
+                    <i class='bx bx-transfer-alt' id="shuffleI" style='color:#ffffff;'   ></i>
+                    <!-- <i class='bx bx-transfer-alt' style='color:#b10000'  ></i> -->
+                </button>
+    
+                <button id="previous">
+                    <i class='bx bx-skip-previous' style= 'color:#ffffff' ></i>
+                </button>
+                <button id="play">
+                    <i class='bx bx-play-circle' id="PlayPause" style='color:#ffffff;'  ></i>
+                    <!--<i class='bx bx-pause-circle' style='color:#ffffff'  ></i>-->
+                </button>
+                <button id="next">
+                    <i class='bx bx-skip-next' style='color:#ffffff' ></i>
+                </button>
+                
+                <button id="reload">
+                    <i class='bx bx-refresh' id="refresh" style='color:#ffffff'  ></i>
+                    <!--<i class='bx bx-refresh' style='color: #B10000;'  ></i>-->
+                </button>
             
-            <button id="reload">
-                <i class='bx bx-loader-circle' style="color: #ffffff;"></i>
-                <!--<i class='bx bx-loader-circle' style='color:#c90000'  ></i>-->
-            </button>
-        
+            </div>
             <div id="endFooter">
                 <img src="Assets/bx-volume-full.png"> 
                 <input type="range" min="0" max="100"  value="100" name="rangeEnd" id="rangeEnd">
             </div>
         </div>
         <div class="progressRange">
+            <div>
+                <span id="init">00:00</span>
+            </div>
+            <div>
+                <input type="range" min="0" max="100" value="0" name="rangeSound" id="rangeSound" onchange="valueProgress">
+            </div>
+            <div>
+                <span id="end">00:00</span>
+            </div>
             <audio src="" aria-valuemax="100%" id="audio"></audio>
-            <input type="range" min="0" max="100" value="0" name="rangeSound" id="rangeSound">
-            
         </div>
 
-    </div>
+    
     </footer>
 
 

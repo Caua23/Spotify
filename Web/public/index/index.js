@@ -1,3 +1,5 @@
+
+
 var playlist = []
 //----------------------------------------------------------------
 const imgAccount = document.getElementById('imgAccount')
@@ -6,14 +8,50 @@ const PlayPause = document.getElementById('PlayPause')
 const buttonPlayPause = document.getElementById('play')
 const next = document.getElementById('next')
 const prev = document.getElementById('previous')
+const shuffle = document.getElementById('shuffleI')
+const refresh = document.getElementById('refresh')
+const account = document.getElementById('account')
+const menu = document.getElementById('menu')
 //----------------------------------------------------------------
+async function getImg() {
+    const idimg = 1
+    const img = await fetch(`http://localhost:3001/conta/${idimg}/imagem`)
+        .then(response => {
+            if (!response.ok) {
+                console.log('Erro ao recuperar a imagem do usuário');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const imageUrl = URL.createObjectURL(blob);
+            console.log(imageUrl);
+            imgAccount.src = imageUrl
+        })
+    console.log(imgAccount.src)
+    console.log(imageUrl)
+}
+
 imgAccount.src = ''
+refresh.addEventListener("click", () => {
+    const currentColor = refresh.style.color;
+    if (currentColor === 'rgb(177, 0, 0)' || currentColor === '#b10000') { // Verifica se a cor atual é vermelha
+        refresh.style.color = '#ffffff'; 
+    } else {
+        refresh.style.color = '#b10000'; // Define a cor para vermelho
+    }
+})
 
-
+shuffle.addEventListener("click", () => {
+    const currentColor = shuffle.style.color;
+    if (currentColor === 'rgb(177, 0, 0)' || currentColor === '#b10000') { // Verifica se a cor atual é vermelha
+        shuffle.style.color = '#ffffff'; 
+    } else {
+        shuffle.style.color = '#b10000'; // Define a cor para vermelho
+    }
+})
 
 let OnOff = 0;
 let currentIndex = 0;
-
 const audioElement = document.createElement('audio');
 buttonPlayPause.addEventListener('click', () => {
     if (OnOff == 0) {
@@ -31,6 +69,7 @@ buttonPlayPause.addEventListener('click', () => {
 
 
 function carregar() {
+    getImg()
     var salutation = document.getElementById('salutation')
     var dataAtual = new Date()
     var hora = dataAtual.getHours();
@@ -43,25 +82,13 @@ function carregar() {
         salutation.innerHTML = `Boa noite`
     }
 
-    const idimg = 1
-fetch(`http://localhost:3001/conta/${idimg}/imagem`)
-    .then(response =>{
-        if(!response.ok){
-            console.log('Erro ao recuperar a imagem do usuário');
-        }
-        return response.blob();
-    })
-    .then(blob=>{
-        const imgElement = document.createElement('img');
-        imgElement.src = URL.createObjectURL(blob); 
-        document.body.appendChild(imgElement); 
-        /*
-        const imageUrl = URL.createObjectURL(blob);
-        imgAccount.src = imageUrl
-        */
-    })
 
 }
+
+account.addEventListener('click', () => {
+    menu.classList.toggle('sumir')
+    
+})
 
 //Scroll do select
 document.addEventListener('DOMContentLoaded', () => {
@@ -76,33 +103,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //Range
-const rangeEnd = document.getElementById('rangeEnd');
+const init = document.getElementById('init')
+const end = document.getElementById('end')
 const rangeSound = document.getElementById('rangeSoud');
-
-// Verificar se os elementos foram encontrados antes de adicionar os ouvintes de eventos
-if (rangeEnd) {
-    rangeEnd.addEventListener('input', () => {
-        var x = rangeEnd.value;
-        var color1 = 'linear-gradient(90deg, #FFFFFF ' + x + '%, #4D4D4D ' + x + '%);';
-        rangeEnd.style.background = color1;
-    });
+const rangeEnd = document.getElementById('rangeEnd');
+/*
+const formatZero = (n) => (n < 10 ?  '0' + n : n);
+const updateTime = () => {
+    const currentMinutes = Math.floor(rangeSound.init / 60)
+    const currentSeconds = Math.floor(rangeSound.init % 60)
+    init.textContent = currentMinutes + ':' + formatZero(currentSeconds)
+    const durationFormatted = isNaN(rangeSound.end) ? 0 : rangeSound.end
+    const durationMinutes = Math.floor(durationFormatted / 60)
+    const durationSeconds = Math.floor(durationFormatted % 60)
+    duration.textContent = durationMinutes + ':' + formatZero(durationSeconds)
+    
+    const progressWidth = durationFormatted
+        ? (rangeSound.init / durationFormatted) * 100
+        : 0;
+    rangeSound.style.backgroundColor = progressWidth + '%'
+    
+    var y = rangeSound.value;
+    var color2 = 'linear-gradient(90deg, #FFFFFF ' + y + '%, #4D4D4D ' + y + '%);';
+    rangeSound.style.background = color2;
+    
 }
 
-if (rangeSound) {
-    rangeSound.addEventListener('input', () => {
-        var y = rangeSound.value;
-        var color2 = 'linear-gradient(90deg, #FFFFFF ' + y + '%, #4D4D4D ' + y + '%);';
-        rangeSound.style.background = color2;
-    });
+*/
+
+
+
+function valueProgress(value) {
+    init.innerHTML = rangeSound.value
+
 }
 
+// rangeSound.addEventListener('input', () => {
+//     var y = rangeSound.value;
+//     var color2 = 'linear-gradient(90deg, #FFFFFF ' + y + '%, #4D4D4D ' + y + '%);';
+//     rangeSound.style.background = color2;
+// })
 
 
+const pesquisar = document.getElementById('pesquisar')
 function toggleSearch() {
     var img = document.getElementById('imgPesquisa');
     var searchContainer = document.getElementById("divPesquisar");
     img.classList.toggle('on')
     searchContainer.classList.toggle('On2')
+    pesquisar.classList.toggle('sumir')
 }
 
 function search() {
@@ -110,8 +159,11 @@ function search() {
     alert('Pesquisando por: ' + searchTerm);
 }
 
-document.getElementById('pesquisar').addEventListener('keyup', function (event) {
+pesquisar.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
         search();
     }
+
 });
+
+

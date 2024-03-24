@@ -5,7 +5,10 @@ const usuarios = db.sequelize.define('usuarios', {
     id: { 
         type: db.Sequelize.INTEGER, primaryKey: true, autoIncrement: true
     },
-
+    nome: { 
+        type: db.Sequelize.STRING(100) 
+    },
+    
     emails: {
         type: db.Sequelize.STRING,
         unique: true
@@ -15,8 +18,8 @@ const usuarios = db.sequelize.define('usuarios', {
     Password: {
         type: db.Sequelize.STRING,
         allowNull: false,
-    }
+    },
 })
 
-//usuarios.sync({force: true})
+//susuarios.sync({force: true})
 module.exports =  usuarios 
