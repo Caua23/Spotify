@@ -29,4 +29,9 @@ Estamos sempre buscando evoluir e trazer novidades para o Spotify Clone. Aqui es
 
 Agradecemos a todos que têm acompanhado e contribuído para o desenvolvimento do Spotify Clone. Estamos empolgados para continuar essa jornada, trazendo melhorias contínuas e novas funcionalidades. Acompanhe nosso progresso e participe dessa evolução!
 
+# Spotify 2.1: Aprimoramentos e Correções de Bugs
+
+Nesta versão, dedicamo-nos a aprimorar a experiência do usuário, abordando problemas identificados e implementando melhorias no fluxo do aplicativo. Realizamos uma revisão detalhada para eliminar alguns bugs e aperfeiçoar o desempenho geral, com um foco especial na funcionalidade de "loudouty".
+
+
 Desenvolvido por Vargas, também conhecido como [Caua23](https://github.com/Caua23) no GitHub, o Spotify Clone 2.0 é um marco importante em nosso compromisso de oferecer a melhor experiência de música possível. Experimente a nova versão e nos conte o que você acha!

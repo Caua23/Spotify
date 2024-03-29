@@ -20,8 +20,8 @@ module.exports = function Router(io) {
         const id = req.params.id;
         try {
             const dataEmail = await db.sequelize.query('SELECT * FROM usuarios WHERE ID = ?', { replacements: [id], type: db.sequelize.QueryTypes.SELECT });
-            const profilePicture = await db.sequelize.query('SELECT * FROM imgs WHERE ID = ?', { replacements: [id], type: db.sequelize.QueryTypes.SELECT})
-            
+            const profilePicture = await db.sequelize.query('SELECT * FROM imgs WHERE ID = ?', { replacements: [id], type: db.sequelize.QueryTypes.SELECT })
+
             if (dataEmail.length === 0 || profilePicture.length === 0) {
                 return res.status(404).json('Usuário não encontrado!');
             }
@@ -43,28 +43,41 @@ module.exports = function Router(io) {
 
     const multer = require('multer')
     const multerConfig = require('./src/config/multer/multer.js')
+    //--------------
     routes.post('/account/overview', multer(multerConfig).single("file"), async (req, res) => {
-        const { originalname: Name, size: Size, filename: Key } = req.file
-        const { UpdateEmail, UpdatePass } = req.body
         console.log(req.file);
         console.log(req.body);
-        const post = await Img.create({
-            Name,
-            Size,
-            Key,
-            Url: '',
-        })
-            .catch((erro) => {
-                return erro
-            })
-
-        const Update = await usuarios.update(
-            {
-                emails: UpdateEmail, Password: UpdatePass
+        const idUpdate = 1
+        const { UpdateEmail, UpdatePass } = req.body
+        if (!req.file) {
+            console.log('Nenhum arquivo foi enviado.');
+        } else {
+            const { originalname: Name, size: Size, filename: Key } = req.file
+            const post = await Img.update({
+                Name,
+                Size,
+                Key,
+                Url: '/Tmp/' + Key,
             },
+                {
+                    where: {
+                        id: idUpdate,
+                    },
+                })
+                .then((result) => {
+                    console.log(result);
+
+                })
+                .catch((error) => {
+                    console.error('Erro:', error);
+                });
+        }
+        const Update = await usuarios.update({
+            emails: UpdateEmail, Password: UpdatePass
+        },
             {
                 where: {
-                    id: 1,
+                    id: idUpdate,
                 },
             }
         )
@@ -74,7 +87,7 @@ module.exports = function Router(io) {
             .catch((error) => {
                 console.error('Erro:', error);
             });
-        return res.json(post);
+        return res.json('Update')
     })
 
     routes.post('/intl-sucess', async (req, res) => {
@@ -98,7 +111,7 @@ module.exports = function Router(io) {
                 Name: 'user_updated.png',
                 Size: 21956,
                 Key: 'User-' + generateName(20),
-                Url: '/Assets/',
+                Url: '/Assets/' + Key,
             })
                 .then((result) => (
                     console.log(result)
@@ -125,32 +138,6 @@ module.exports = function Router(io) {
             res.send('Por favor, insira e-mail e senha');
         }
     });
-
-    // routes.get('/conta/:id/imagem', (req, res) => {
-    //     const id = req.params.id
-    //     const idNum = Number(id)
-    //     db.sequelize.query('select imagem from conta where id = ? ', { replacements: [idNum], type: db.sequelize.QueryTypes.SELECT }, (err, results) => {
-    //         if (err) {
-    //             console.error('Erro ao recuperar imagem do usuário:', err);
-    //             res.status(500).send('Erro ao recuperar imagem do usuário');
-    //             return;
-    //         }
-    //         if (results.length > 0 && results[0].imagem) {
-    //             // Se houver uma imagem, envie-a para o frontend
-    //             const imagem = results[0].imagem;
-    //             res.writeHead(200, {
-    //                 'Content-Type': 'image/png', // ajuste o tipo de conteúdo conforme necessário
-    //                 'Content-Length': imagem.length
-    //             });
-    //             res.end(imagem);
-    //         } else {
-    //             // Se não houver imagem ou o usuário não for encontrado, envie uma resposta vazia
-    //             res.status(404).send('Imagem não encontrada');
-    //         }
-    //     })
-    // })
-
-
     routes.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../Web/', 'views', 'indexSemLogin.html'))
     })
@@ -186,7 +173,6 @@ module.exports = function Router(io) {
         return name
 
     }
-
 
     routes.post('/verificar-email', (req, res) => {
         const { email } = req.body;

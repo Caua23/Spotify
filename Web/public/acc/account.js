@@ -38,15 +38,16 @@ async function dataUser() {
             return response.json()
         })
         .then((data) => {
+            console.log(data);
             const User = data.dataEmail;
             const Picture = data.ImgProfile;
             const Url = Picture[0].Url;
-            const nameUrl = Picture[0].Name;
-            imgDropMenu.src = Url + nameUrl;
-            ImgProfile.src = Url + nameUrl;
+            imgDropMenu.src = Url;
+            ImgProfile.src = Url;
             resName.innerHTML = User[0].nome;
             inputEmail.value = User[0].emails;
-            inputPassword.value = User[0].senha;
+            inputPassword.value = User[0].Password;
+
         })
         .catch((erro) => {
             console.log(erro);

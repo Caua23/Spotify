@@ -1,5 +1,4 @@
 
-
 var playlist = []
 //----------------------------------------------------------------
 const imgAccount = document.getElementById('imgAccount')
@@ -13,29 +12,26 @@ const refresh = document.getElementById('refresh')
 const account = document.getElementById('account')
 const menu = document.getElementById('menu')
 //----------------------------------------------------------------
-async function getImg() {
-    const idimg = 1
-    const img = await fetch(`http://localhost:3001/conta/${idimg}/imagem`)
-        .then(response => {
-            if (!response.ok) {
-                console.log('Erro ao recuperar a imagem do usuário');
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            const imageUrl = URL.createObjectURL(blob);
-            console.log(imageUrl);
-            imgAccount.src = imageUrl
-        })
-    console.log(imgAccount.src)
-    console.log(imageUrl)
-}
+async function dataUser() {
+    let idUsuario = 1;
+    fetch(`http://localhost:3001/data/${idUsuario}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const Picture = data.ImgProfile;
+            if (Picture && Picture.length > 0) {
+                const Url = Picture[0].Url;
+                imgAccount.src = Url
 
-imgAccount.src = ''
+            }
+        })
+}
+dataUser();
+
 refresh.addEventListener("click", () => {
     const currentColor = refresh.style.color;
     if (currentColor === 'rgb(177, 0, 0)' || currentColor === '#b10000') { // Verifica se a cor atual é vermelha
-        refresh.style.color = '#ffffff'; 
+        refresh.style.color = '#ffffff';
     } else {
         refresh.style.color = '#b10000'; // Define a cor para vermelho
     }
@@ -44,7 +40,7 @@ refresh.addEventListener("click", () => {
 shuffle.addEventListener("click", () => {
     const currentColor = shuffle.style.color;
     if (currentColor === 'rgb(177, 0, 0)' || currentColor === '#b10000') { // Verifica se a cor atual é vermelha
-        shuffle.style.color = '#ffffff'; 
+        shuffle.style.color = '#ffffff';
     } else {
         shuffle.style.color = '#b10000'; // Define a cor para vermelho
     }
@@ -69,7 +65,6 @@ buttonPlayPause.addEventListener('click', () => {
 
 
 function carregar() {
-    getImg()
     var salutation = document.getElementById('salutation')
     var dataAtual = new Date()
     var hora = dataAtual.getHours();
@@ -87,7 +82,7 @@ function carregar() {
 
 account.addEventListener('click', () => {
     menu.classList.toggle('sumir')
-    
+
 })
 
 //Scroll do select

@@ -433,14 +433,21 @@ header button p {
     list-style: none;
     border-radius: 5px;
 }
-#listaMenu li{
+#listaMenu li {
     font-size: 10pt;
     text-align: start;
     cursor: pointer;
     position: relative;
-    padding: 20px;
+    transition: 0.8s;
     border-radius: 5px;
 }
+
+a { 
+    pointer-events: none; 
+    cursor: pointer; 
+}
+
+
 #listaMenu hr{
     width: 95%;
     margin: auto;
@@ -451,6 +458,12 @@ header button p {
     opacity: 20%;
 }
 #listaMenu li a{
+    font-size: 10pt;
+    text-align: start;
+    cursor: pointer;
+    position: relative;
+    padding: 20px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
 }
@@ -475,5 +488,6 @@ main {
 }
 
 #listaMenu li:hover{
+    transition: 0.8s;
     background-color: #3F3F3F;
 }

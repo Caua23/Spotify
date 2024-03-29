@@ -29,7 +29,7 @@ io.on('connection', Socket => {
 const publicPath = path.join(__dirname, '../web/public');
 app.use(express.static(publicPath));
 
-app.use(session({ secret: 'Var28024535' }));
+//app.use(session({ secret: 'Var28024535' }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -46,7 +46,7 @@ serveStaticFiles('acc', 'account');
 //----------------------------------------------------------------\\
 //assets
 app.use('/Assets', express.static(path.join(__dirname, '../web/src/Assets')));
-
+app.use('/Tmp', express.static(path.join(__dirname, './src/tmp/uploads')));
 
 //Router 
 const routes = require('./Routes')(io);
