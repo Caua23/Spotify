@@ -11,7 +11,7 @@ dropMenu.addEventListener('click', (e) => {
 document.getElementById('real-file-input').addEventListener('change', function () {
     let isValid = false;
     var fileInput = this;
-    var validExtensions = ['jpeg', 'gif', 'pjpeg', 'png'];
+    var validExtensions = ['jpeg','jpg', 'gif', 'pjpeg', 'png'];
     for (var i = 0; i < fileInput.files.length; i++) {
         var extension = fileInput.files[i].name.split('.').pop().toLowerCase();
         if (validExtensions.indexOf(extension) !== -1) {
@@ -30,8 +30,10 @@ document.getElementById('real-file-input').addEventListener('change', function (
     }
 });
 const idUsuario = 1
+const fileName = document.getElementById('file-name')
 const inputEmail = document.getElementById('inputEmail')
 const inputPassword = document.getElementById('inputPassword')
+const inputFile = document.getElementById('real-file-input')
 async function dataUser() {
     fetch(`http://localhost:3001/data/${idUsuario}`)
         .then((response) => {
@@ -55,6 +57,14 @@ async function dataUser() {
 
 }
 dataUser()
+
+
+function valueStart(){
+    dataUser()
+    fileName.innerHTML = '';
+    inputFile.value = '';
+}
+
 
 var pais = document.getElementById('pais')
 if ("geolocation" in navigator) {

@@ -66,6 +66,8 @@ nav a {
     width: 40;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 
 #Menu {
@@ -86,6 +88,14 @@ nav a {
 }
 
 
+
+#Logout{
+    background: none;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
 .sumir {
     display: none;
 }
@@ -101,13 +111,18 @@ form {
     
 }
 
+
+
 #imagem {
     text-align: center;
     display: inline;
 }
 
 #imagem img {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
+    object-fit: cover;
 }
 #imagem p{
     font-size: 15pt;
@@ -193,22 +208,25 @@ main h1{
     margin: 5px;
 }
 
-#nameInfo{
-    margin-bottom: 20px;
-    /* margin-right: 160px; */
-    position: relative;
-    right: 83px;
-    align-self: start;
+#nameInfo {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 500px;
+    align-items: start; 
+    text-align: center; 
 }
 
 #nameInfo p {
     position: relative;
 }
-
-
+.nameInfoFilho {
+    display: inline-block;
+    margin-top: 5px; 
+}
 #resName{ 
-    position: absolute;
-    left: 40px;
+    user-select: text;
+    /* left: 40px; */
     margin-top: 8px;
     font-weight: 600;
     font-size: 12pt;

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="https://www.scdn.co/i/_global/favicon.png" type="image/x-icon">
+        <!--Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Kanit:wght@700&display=swap"
+            rel="stylesheet">
+    
+        <title>Sound Pure</title>
+        <link rel="stylesheet" href="/AudioInfo/AudioInfo.css">
+    </head>
+<body>
+    <header>
+        <a href="/Login">
+            <img id="logo" src="/Assets/Spotify_logo_without_text.svg.png" alt="">
+        </a>
+    </header>
+    
+    <main>
+        <form action="" method="post">
+
+            <div>
+                <h1>Sobre sua musica</h1>
+                <p>Adicione informações sobre sua Musica</p>
+            </div>
+            <div id="imagem">
+                <p>Adicione uma foto para musica</p>
+                <br>
+                <div class="file-input">
+                    <input onchange="imgMusic()" name="ImgMusic" accept="image/jpeg, image/gif, image/pjpeg , image/png"  type="file"
+                        id="real-file-input" hidden />
+                    <label for="real-file-input" class="custom-file-upload">Escolher arquivo</label>
+                    <br>
+                    <br>
+                    <div id="error-message" style="display: none; color: red;">Por favor, selecione um arquivo JPEG ou
+                        PNG.</div>
+                    <span id="file-name"></span>
+                </div>
+            </div>
+            <div>
+                <p>Adicione um nome para musica</p>
+                <input type="text" name="NameMusic" onchange="nameMusic()">
+            </div>
+            <div>
+                <p>Nome do criador?</p>
+                <input type="text" name="NameCreator" onchange="nameCreator()">
+            </div>
+            <input type="submit" value="Proximo">
+        </form>
+        <aside>
+            <div id="demo">
+
+            </div>
+        </aside>
+    </main>
+
+    <script src="/AudioInfo/AudioInfo.js"></script>
+</body>
+</html>

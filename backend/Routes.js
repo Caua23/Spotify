@@ -1,8 +1,8 @@
 const { json } = require('body-parser');
 
+
 module.exports = function Router(io) {
     const usuarios = require('./models/User.js');
-
     const music = require('./models/Music.js')
     const db = require('./models/db.js')
     const Img = require('./models/Img.js')
@@ -10,12 +10,28 @@ module.exports = function Router(io) {
     //Rotas
     const routes = require('express').Router();
     //outros
+    require('dotenv').config();
     const path = require('path')
     const jwt = require('jsonwebtoken');
     //const ImgUser = "../Web/src/Assets/user_updated.png"
 
 
-
+    routes.get('/Musicas',async (req,res)=>{
+        try{
+            const musica = await db.sequelize.query('SELECT * FROM music ', { type: db.sequelize.QueryTypes.SELECT });
+            if (musica.length === 0 ) {
+                return res.status(404).json('nenhuma musica!');
+            }
+            const musicas = {
+                musica: musica
+            }
+            console.log(json(musicas))
+            return res.json(musicas);
+        }catch(err){
+            console.error('Erro ao buscar dados das musicas:', err);
+            return res.status(500).json('Erro ao buscar dados no banco de dados');
+        }
+    })
     routes.get('/data/:id', async (req, res) => {
         const id = req.params.id;
         try {
@@ -41,13 +57,77 @@ module.exports = function Router(io) {
         res.sendFile(path.join(__dirname, '../Web/', 'views', 'account.html'))
     })
 
-    const multer = require('multer')
-    const multerConfig = require('./src/config/multer/multer.js')
-    //--------------
+    //------------------Baixar Arquivos ---------------------\\
+    const multer = require('multer');
+    const multerConfig = require('./src/config/multer/multer.js');
+    const MulterMusica = require('./src/config/multer/multerMusica.js');
+    const MulterMusicaImg = require('./src/config/multer/multerMusicImg.js');
+
+    // Middleware para upload de áudio
+    routes.get('/track/music/audio', (req,res)=> {
+        res.sendFile(path.join(__dirname, '../Web/', 'views', 'Audio.html'))
+    })
+    routes.get('/track/music', (req,res)=> {
+        res.sendFile(path.join(__dirname, '../Web/', 'views', 'AudioInfo.html'))
+    })
+    routes.post('/track/music/audio', multer(MulterMusica).single('audiofile'), async (req, res) => {
+        if (!req.file) {
+            return res.status(400).send('Nenhum arquivo foi enviado.');
+        }
+
+        try {
+            const { originalname: MusicName, size: MusicSize, filename: MusicKey } = req.file;
+            const post = await music.update({
+                MusicName,
+                MusicSize,
+                MusicKey,
+                MusicURL: '/Sounds/' + MusicKey,
+            }, {
+                where: { id: musicId },
+            });
+
+            res.json(post);
+        } catch (error) {
+            console.error('Erro:', error);
+            res.status(500).send('Erro ao salvar a música');
+        }
+    });
+
+    // Middleware para upload de imagem da música
+    routes.post('/track/music', multer(MulterMusicaImg).single("ImgMusic"), async (req, res) => {
+        if (!req.file || !req.body) {
+            return res.status(400).send('Dados incompletos enviados.');
+        }
+
+        try {
+            const { NameMusic, NameCreator } = req.body;
+            const { originalname: ImageName, size: ImageSize, filename: ImageKey } = req.file;
+            const musicEntry = await music.create({
+                ImageURL: '/ImgSounds/' + ImageKey, // Caminho da imagem
+                NameMusic,
+                NameCreator,
+            });
+
+            console.log("ID do novo registro:", musicEntry.Id);
+            // Agora você pode usar musicEntry.id para realizar outras operações
+            global.musicId = musicEntry.Id;
+            
+            
+            return res.json(musicEntry)
+        }
+        catch (error) {
+            console.error('Erro:', error);
+            res.status(500).send('Erro ao salvar a música');
+        }
+        res.redirect('/track/music/audio')
+    });
+
+
+
     routes.post('/account/overview', multer(multerConfig).single("file"), async (req, res) => {
+        const idUpdate = 1
         console.log(req.file);
         console.log(req.body);
-        const idUpdate = 1
         const { UpdateEmail, UpdatePass } = req.body
         if (!req.file) {
             console.log('Nenhum arquivo foi enviado.');
@@ -87,7 +167,7 @@ module.exports = function Router(io) {
             .catch((error) => {
                 console.error('Erro:', error);
             });
-        return res.json('Update')
+        return res.json('Update', Update)
     })
 
     routes.post('/intl-sucess', async (req, res) => {
@@ -95,9 +175,10 @@ module.exports = function Router(io) {
         const usuarioExistente = await usuarios.findOne({ where: { emails: emailCadastro } })
         if (usuarioExistente) {
 
-            io.emit('evento', { message: 'Evento emitido do servidor' });
+            // io.emit('evento', { message: 'Evento emitido do servidor' });
 
         } else {
+            //token
             const newUser = await usuarios.create({
                 emails: emailCadastro,
                 Password: String(senhaCadastro),
@@ -127,7 +208,7 @@ module.exports = function Router(io) {
                     if (results.length > 0) {
                         res.sendFile(path.join(__dirname, '../Web/', 'views', 'index.html'));
                     } else {
-
+                        return false
                     }
                 })
                 .catch(error => {
@@ -136,6 +217,7 @@ module.exports = function Router(io) {
                 });
         } else {
             res.send('Por favor, insira e-mail e senha');
+
         }
     });
     routes.get('/', (req, res) => {
@@ -160,9 +242,6 @@ module.exports = function Router(io) {
     routes.get('/Sucess', (req, res) => {
         res.sendFile(path.join(__dirname, '../Web/', 'views', 'index.html'));
     })
-
-
-
 
     function generateName(len) {
         var name = ""
@@ -199,35 +278,32 @@ module.exports = function Router(io) {
 
 
 
-    routes.post('/gerarToken', (req, res) => {
-        const userId = req.body.userId;
+    // const generateToken = (userId) => {
+    //     const jwtSecret = process.env.jwt_secret;
+    //     return jwt.sign({ userId }, jwtSecret, { expiresIn: '30d' }); 
+    // };  
+    // const token = generateToken(userId);
+    // routes.get('/rota_protegida', verifyToken, (req, res) => {
+    //     // O usuário está autenticado e o ID do usuário está disponível em req.userId
+    //     res.json({ message: 'Rota protegida', userId: req.userId });
+    // });
 
-        const token = jwt.sign({ userId }, '5423526346421', { expiresIn: '30d' });
-        res.json({ token });
-    })
-
-    const verificarToken = (req, res, next) => {
-        const token = req.headers.authorization;
-        if (!token) {
-            return res.redirect('/')
-        }
-        jwt.verify(token, '5423526346421', (err, decoded) => {
-            if (err) {
-                return res.redirect('/')
-            }
-            req.userId = decoded.userId;
-            next();
-        })
-    }
-
-    routes.get('/rotaProtegida', verificarToken, (req, res) => {
-        res.json({ mensagem: 'Rota protegida com sucesso!', userId: req.userId });
-    });
-
+    // const verifyToken = (req, res, next) => {
+    //     const token = req.headers.authorization;
+    //     if (!token) {
+    //         return res.status(401).json({ message: 'Token de autenticação não fornecido' });
+    //     }
+    //     jwt.verify(token, jwtSecret, (err, decoded) => {
+    //         if (err) {
+    //             return res.status(401).json({ message: 'Token de autenticação inválido' });
+    //         }
+    //         req.userId = decoded.userId; // O ID do usuário está disponível em req.userId
+    //         next();
+    //     });
+    // };
 
 
     return routes;
 };
-//module.exports = routes;
 
 

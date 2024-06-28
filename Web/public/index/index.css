@@ -36,7 +36,7 @@ select:focus {
     outline: none;
 }
 
-#pesquisa{
+#pesquisa {
     display: flex;
 }
 
@@ -44,14 +44,14 @@ select:focus {
     display: none;
 }
 
-#search-container input[type= 'text']{
+#search-container input[type='text'] {
     padding: 10px;
     border-bottom: white 1px solid;
     border-radius: 4px 0 0 4px;
     background-color: none;
 }
 
-#search-container button{
+#search-container button {
     padding: 10px;
     color: white;
     border-radius: 0 4px 4px 0;
@@ -127,7 +127,7 @@ section p {
 }
 
 
-#divPesquisar input[type='text']{
+#divPesquisar input[type='text'] {
     font-family: 'Montserrat';
     border-radius: 5px;
     border: none;
@@ -142,7 +142,7 @@ section p {
 }
 
 
-.classPesquisar{
+.classPesquisar {
     display: flex;
     opacity: 0%;
     transition: 0.5s;
@@ -152,24 +152,27 @@ section p {
     outline: none;
 }
 
-#pesquisar{
+#pesquisar {
     color: white;
 }
-.sumir{
+
+.sumir {
     display: none;
 }
 
-.On2{
+.On2 {
     margin-left: -50px;
     opacity: 100%;
     transition: 1.5s;
 }
 
-#imgPesquisa{
+
+
+#imgPesquisa {
     transition: 1s;
 }
 
-.on{
+.on {
     transition: 1s;
     margin-left: -150px;
 }
@@ -208,14 +211,15 @@ footer {
     margin-top: 560px;
     position: fixed;
     width: 1325px;
-    
+
 }
 
 #mainFooter {
     display: flex;
-    
+
 }
-#buttonsFooters{
+
+#buttonsFooters {
     margin-left: 550px;
 }
 
@@ -225,16 +229,19 @@ footer {
     margin-left: 340px;
 
 }
-.progressRange{
+
+.progressRange {
     display: flex;
     margin-top: 5px;
-   align-items: center;
-   justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
-#init{
+
+#init {
     margin-right: 120px;
 }
-#end{
+
+#end {
     margin-left: 20px;
 }
 
@@ -248,7 +255,7 @@ input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
 }
 
-#rangeSound{
+#rangeSound {
     background: linear-gradient(90deg, #4D4D4D 60%, #4D4D4D 60%);
     border-radius: 5px;
 }
@@ -256,7 +263,7 @@ input[type='range']::-webkit-slider-thumb {
 #rangeSound::-webkit-slider-runnable-track {
     width: 200px;
     height: 5px;
-    
+
 }
 
 #rangeSound::-webkit-slider-thumb {
@@ -325,7 +332,7 @@ footer button i {
     align-items: center;
 }
 
-i{
+i {
     font-size: 32px !important;
 }
 
@@ -336,6 +343,7 @@ header {
     margin-top: 5px;
     display: block;
 }
+
 #salutation {
     font-family: 'Kanit', sans-serif;
     margin-top: 20px;
@@ -343,10 +351,12 @@ header {
     font-size: 23pt;
     font-weight: 600;
 }
-.headerButtons{
+
+.headerButtons {
     display: flex;
     margin-left: 770px;
 }
+
 header button {
     text-align: center;
     margin: 15px;
@@ -397,7 +407,7 @@ header button p {
 
 }
 
-#account{
+#account {
     background-color: rgba(0, 0, 0, 0.428);
     height: 40px;
     width: 40px;
@@ -405,17 +415,17 @@ header button p {
     border-radius: 60px;
     padding-top: 2px;
     position: relative;
-    
 }
 
 
-#imgAccount{
+#imgAccount {
+    object-fit: cover;
     height: 25px;
     width: 25px;
     border-radius: 15px;
-    
 }
-#menu{
+
+#menu {
     height: auto;
     color: white;
     margin-top: 20px;
@@ -423,16 +433,18 @@ header button p {
     right: 7%;
     cursor: default;
 }
-#menu ul{
+
+#menu ul {
     width: 300px;
-    list-style:none;
-    border:1px solid #282828;
+    list-style: none;
+    border: 1px solid #282828;
     background-color: #282828;
-    float:left;
+    float: left;
     padding: 4px;
     list-style: none;
     border-radius: 5px;
 }
+
 #listaMenu li {
     font-size: 10pt;
     text-align: start;
@@ -442,22 +454,22 @@ header button p {
     border-radius: 5px;
 }
 
-a { 
-    pointer-events: none; 
-    cursor: pointer; 
+a {
+    cursor: pointer;
 }
 
 
-#listaMenu hr{
+#listaMenu hr {
     width: 95%;
     margin: auto;
     margin-top: 1px;
     top: -10px;
-    height:  1px;
+    height: 1px;
     color: white;
     opacity: 20%;
 }
-#listaMenu li a{
+
+#listaMenu li a {
     font-size: 10pt;
     text-align: start;
     cursor: pointer;
@@ -467,7 +479,8 @@ a {
     display: flex;
     justify-content: space-between;
 }
-#bx-add-to-queue{
+
+#bx-add-to-queue {
     font-size: 19px !important;
 }
 
@@ -479,15 +492,123 @@ main {
     margin-top: 10px;
 }
 
-#buttonsFoters{
+#buttonsFoters {
     transition: transform 0.3s ease;
 }
 
-#buttonsFooters button:hover{
+#buttonsFooters button:hover {
     transform: scale(1.2);
 }
 
-#listaMenu li:hover{
+#listaMenu li:hover {
     transition: 0.8s;
     background-color: #3F3F3F;
 }
+
+
+
+
+#mainMusic {
+    margin-top: 200px;
+}
+
+.selected{
+    background-color: #151515;
+    transition: 0.5s;
+}
+
+
+.card{
+    padding-top: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: 0.5s;
+    margin: 20px;
+    width: 191px;
+    height: 284px;
+    border-radius: 15px;
+}
+.card:hover {
+    background-color: #151515;
+    transition: 0.5s;
+}
+
+
+.imgMusic {
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+}
+
+.image-button {
+    position: absolute;
+    bottom: -10px;
+    left: 65%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.5s;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.image-container:hover .image-button {
+    bottom: 10px;
+    opacity: 1;
+    transition:  0.5s;
+    transform: scale(1.1);
+}
+
+.image-button {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #B10000;
+}
+
+.resMusic {
+    margin-top: 8px;
+    font-weight: 600;
+    margin: 6px;
+}
+
+.by{
+    color: #A7A7A7;
+    font-weight: 400;
+    font-size: 10pt;
+    margin: 6px;
+    text-align: center;
+}
+
+
+.divMark{
+    position: absolute;
+}
+
+.buttonMark{
+    position: relative;
+    right: -10%;
+    cursor: pointer;
+    margin-left: 130px;
+    max-width: 50px;
+    max-height: 50px;
+    opacity: 0;
+    transition: 0.7s all ease-out;
+}
+
+
+#mainMusic{
+    display: flex;
+}
+

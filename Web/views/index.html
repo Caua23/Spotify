@@ -10,13 +10,15 @@
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Kanit:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Kanit:wght@700&display=swap"
+        rel="stylesheet">
 
     <title>Sound Pure</title>
 </head>
@@ -35,18 +37,18 @@
             <br>
             <button>
                 <a id="navPesquisa">
-                    <img width="25px" height="25px" src="Assets/bx-search-alt-2.png" alt="" >
+                    <img width="25px" height="25px" src="Assets/bx-search-alt-2.png" alt="">
                     Buscar
                 </a>
             </button>
-                
-            
-           
-            
-            
+
+
+
+
+
         </nav>
-    
-    
+
+
         <section>
             <div id="sectionPlaylist">
                 <button id="library">
@@ -56,20 +58,20 @@
                 <button id="plus">
                     <img src="Assets/bx-plus.png" alt="">
                 </button>
-                
+
             </div>
             <div id="pesquisa">
                 <button onclick="toggleSearch()" id="searchPlaylist">
                     <img width="23px" height="23px" src="Assets/bx-search-alt-2.png" id="imgPesquisa" alt="">
                 </button>
-    
+
                 <div class="classPesquisar" id="divPesquisar">
                     <input type="text" class="sumir" placeholder="Pesquisar" id="pesquisar">
                 </div>
             </div>
-            
-                <select name="playlist" size="10" id="playlist"></select>
-            
+
+            <select name="playlist" size="10" id="playlist"></select>
+
         </section>
     </aside>
 
@@ -81,52 +83,53 @@
                     <p>Ver planos premium</p>
                 </a>
             </button>
-    
+
             <button id="download">
                 <img src="Assets/bxs-download.png" alt="">
                 <p>
                     Instalar Aplicativo <br> (Em Breve!!!)
                 </p>
             </button>
-    
+
             <button id="bell">
                 <a href="">
                     <img src="Assets/bxs-bell.png" alt="">
                 </a>
             </button>
 
-            <button id="account" > 
+            <button id="account">
                 <img height="25px" id="imgAccount" src="" alt="">
                 <div class="sumir" id="menu">
                     <ul id="listaMenu">
                         <li>
                             <a href="/account/overview">
-                                Conta <i class='bx bx-add-to-queue' id="bx-add-to-queue" style='color:#ffffff'  ></i>
+                                Conta <i class='bx bx-add-to-queue' id="bx-add-to-queue" style='color:#ffffff'></i>
                             </a>
                         </li>
                         <li>
-                            <a href="/profile">
-                                Perfil <i class='bx bx-add-to-queue' id="bx-add-to-queue" style='color:#ffffff'  ></i>
+                            <a href="/Music">
+                                Criar Musica <i class='bx bx-add-to-queue' id="bx-add-to-queue"
+                                    style='color:#ffffff'></i>
                             </a>
                         </li>
                         <li>
                             <a href="/Cfg">
-                                Configurações 
+                                Configurações
                             </a>
                         </li>
                         <hr>
                         <li>
                             <a href="/logout">
-                                Sair 
+                                Sair
                             </a>
                         </li>
                     </ul>
                 </div>
             </button>
         </div>
-        
+
         <div id="salutation">
-            
+
         </div>
         <div class="visualPlaylist">
 
@@ -134,43 +137,40 @@
     </header>
 
     <main>
-        <div id="name">
-
-        </div>
+        <div id="mainMusic"></div>
     </main>
 
     <footer>
         <div id="music">
         </div>
-    
+
         <div id="mainFooter">
             <div id="buttonsFooters">
 
-                <button id="shuffle" >
-                    <i class='bx bx-transfer-alt' id="shuffleI" style='color:#ffffff;'   ></i>
-                    <!-- <i class='bx bx-transfer-alt' style='color:#b10000'  ></i> -->
+                <button id="shuffle">
+                    <i class='bx bx-transfer-alt' id="shuffleI" style='color:#ffffff;'></i>
+                    
                 </button>
-    
+
                 <button id="previous">
-                    <i class='bx bx-skip-previous' style= 'color:#ffffff' ></i>
+                    <i class='bx bx-skip-previous' style='color:#ffffff'></i>
                 </button>
-                <button id="play">
-                    <i class='bx bx-play-circle' id="PlayPause" style='color:#ffffff;'  ></i>
-                    <!--<i class='bx bx-pause-circle' style='color:#ffffff'  ></i>-->
+                <button id="PlaySoundB">
+                    <i class='bx bx-play-circle' id="PlayPause" style='color:#ffffff;'></i>
                 </button>
                 <button id="next">
-                    <i class='bx bx-skip-next' style='color:#ffffff' ></i>
+                    <i class='bx bx-skip-next' style='color:#ffffff'></i>
                 </button>
-                
+
                 <button id="reload">
-                    <i class='bx bx-refresh' id="refresh" style='color:#ffffff'  ></i>
-                    <!--<i class='bx bx-refresh' style='color: #B10000;'  ></i>-->
+                    <i class='bx bx-refresh' id="refresh" style='color:#ffffff'></i>
+                    
                 </button>
-            
+
             </div>
             <div id="endFooter">
-                <img src="Assets/bx-volume-full.png"> 
-                <input type="range" min="0" max="100"  value="100" name="rangeEnd" id="rangeEnd">
+                <img src="Assets/bx-volume-full.png">
+                <input type="range" min="0" max="100" value="100" step="1" name="rangeEnd" id="rangeEnd">
             </div>
         </div>
         <div class="progressRange">
@@ -178,24 +178,21 @@
                 <span id="init">00:00</span>
             </div>
             <div>
-                <input type="range" min="0" max="100" value="0" name="rangeSound" id="rangeSound" onchange="valueProgress">
+                <input type="range" min="0" max="100" value="0" name="rangeSound" id="rangeSound"
+                    onchange="valueProgress">
             </div>
             <div>
                 <span id="end">00:00</span>
             </div>
-            <audio src="" aria-valuemax="100%" id="audio"></audio>
+            <!-- <audio src=""  id="audio"></audio> -->
         </div>
 
-    
+
     </footer>
 
 
 
-    <!--
-        <img height="30px" src="Assets/Spotify_logo_without_text.svg.png" alt="">
     
-        <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    -->
     <script src="/index/index.js"></script>
 </body>
 

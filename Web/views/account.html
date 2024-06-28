@@ -47,7 +47,7 @@
                 <div id="Menu" class="sumir">
                     <p><a href="">voltar</a></p>
                     <br>
-                    <p><a href="">Sair</a></p>
+                    <p><input type="button" id="Logout" onclick="Logout" value="Sair"></p>
                 </div>
 
             </button>
@@ -61,7 +61,9 @@
             </h1>
             <div id="imagem">
                 <p>Foto de Perfil</p>
-                <img src="" height="150px" width="150px" id="ImgProfile" alt="">
+                <div >
+                    <img src="" id="ImgProfile" alt="">
+                </div>
                 <br>
                 <div class="file-input">
                     <input name="file" accept="image/jpeg, image/gif, image/pjpeg , image/png"  type="file"
@@ -76,7 +78,9 @@
             </div>
             <div id="nameInfo">
                 <p> Nome De Usuario: </p>
-                <p id="resName"></p>
+                <div class="nameInfoFilho">
+                    <p id="resName"></p>
+                </div>
             </div>
 
             <div id="user-info">
@@ -98,13 +102,14 @@
                     </select>
                 </div>
                 <div id="botao">
-                    <input type="reset" id="Cancel" value="Cancel">
+                    <input type="button" onclick="valueStart()" id="Cancel" value="Cancel">
                     <input type="submit" id="Save" value="Save">
                 </div>
             </div>
         </form>
     </main>
     <script src="/acc/account.js"></script>
+    
 </body>
 
 </html>

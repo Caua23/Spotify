@@ -42,12 +42,14 @@ serveStaticFiles('login', 'Login');
 serveStaticFiles('signup', 'SignUp');
 serveStaticFiles('index', 'index');
 serveStaticFiles('acc', 'account');
-
+serveStaticFiles('AudioInfo', 'AudioInfo');
+serveStaticFiles('Audio', 'Audio');
 //----------------------------------------------------------------\\
 //assets
 app.use('/Assets', express.static(path.join(__dirname, '../web/src/Assets')));
 app.use('/Tmp', express.static(path.join(__dirname, './src/tmp/uploads')));
-
+app.use('/Sounds', express.static(path.join(__dirname, './src/tmp/Som')));
+app.use('/ImgSounds', express.static(path.join(__dirname, './src/tmp/Som/Imgs')));
 //Router 
 const routes = require('./Routes')(io);
 app.use(routes)
