@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crie Sua Conta | Sound Pure</title>
+    <link rel="stylesheet" href="/singUp/SignUp.css" />
+    <link
+      rel="shortcut icon"
+      href="https://www.scdn.co/i/_global/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <video autoplay loop muted>
+      <!-- Adicione o caminho do seu vídeo MP4 no atributo src -->
+      <source
+        src="/Assets/_import_624e701eba64a0.34411893.mp4"
+        type="video/mp4"
+      />
+      Seu navegador não suporta o elemento de vídeo.
+    </video>
+    <header>
+      <img
+        height="50px"
+        src="/Assets/Spotify_logo_without_text.svg.png"
+        alt=""
+      />
+    </header>
+    <main>
+      <div class="All">
+        <h1>Se inscreva e comece a curtir</h1>
+        <form onsubmit="formulario(event)">
+          <label for="Email">Endereço de e-mail</label>
+          <br />
+          <input
+            type="email"
+            placeholder="nome@dominio.com"
+            name="emailCadastro"
+            id="email"
+          />
+          <div id="res"></div>
+          <br />
+          <label id="labelPass" for="Password">Password</label>
+          <br />
+          <input
+            type="password"
+            id="password1"
+            name="passCadastro"
+            class="pass"
+          />
+          <br />
+          <label id="labelConf" for="confirme">Confirme a Sua Senha</label>
+          <br />
+          <input
+            type="password"
+            id="password2"
+            name="passCadastro2"
+            class="pass"
+          />
+          <div id="res2">
+            Necessita de pelo menos uma letra maiuscula, tem que conter 6
+            caracteres
+          </div>
+          <a href=""><input type="submit" value="Avançar" id="button" /></a>
+        </form>
+
+        <div class="final">
+          <a href="/#" id="phone">Usar número de telefone.</a>
+
+          <p>Já tem uma conta? <a href="/login">Faça login aqui.</a></p>
+        </div>
+      </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/singUp/SingUp.js"></script>
+  </body>
+</html>

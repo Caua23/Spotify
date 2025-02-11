@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.scdn.co/i/_global/favicon.png" type="image/x-icon">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Kanit:wght@700&display=swap"
+        rel="stylesheet">
+
+    <title>Sound Pure</title>
+    <link rel="stylesheet" href="/acc/account.css">
+</head>
+
+<body>
+    <header>
+        <a href="/Login">
+            <img id="logo" src="/Assets/Spotify_logo_without_text.svg.png" alt="">
+        </a>
+        <nav>
+            <a
+                href="https://www.spotify.com/br-pt/premium/?utm_source=app&utm_medium=desktop&utm_campaign=upgrade&ref=web_loggedin_upgrade_button">
+                Premium
+            </a>
+
+            <a
+                href="https://support.spotify.com/br-pt/?_gl=1*zxbrpx*_gcl_aw*R0NMLjE3MDczNDUwNTEuQ2p3S0NBaUE4WXl1QmhCU0Vpd0E1UjMtRTcxaEV6VVdwLTU1djF0TEdlaXlIbnljTEtNN3hWLW94dXAxVXR3MmVyN0FhczJJOVltUFRob0NNSGdRQXZEX0J3RQ..*_gcl_dc*R0NMLjE3MDczNDUwNTEuQ2p3S0NBaUE4WXl1QmhCU0Vpd0E1UjMtRTcxaEV6VVdwLTU1djF0TEdlaXlIbnljTEtNN3hWLW94dXAxVXR3MmVyN0FhczJJOVltUFRob0NNSGdRQXZEX0J3RQ..*_gcl_au*MTc2Mzk3NTI4NS4xNzA3MzQ1MDUx">
+                Suporte
+            </a>
+
+            <a href="#">
+                Baixar (Em Breve!)
+            </a>
+            |
+            <button id="dropMenu">
+                <img src="https://www.rannveigaamodt.com/wp-content/uploads/revslider/home1/150x150.gif" id="ImgMenu"
+                    width="40px" height="40px" alt="">
+                <div id="Menu" class="sumir">
+                    <p><a href="">voltar</a></p>
+                    <br>
+                    <p><input type="button" id="Logout" onclick="Logout" value="Sair"></p>
+                </div>
+
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <form action="" method="post" enctype="multipart/form-data">
+            <h1>
+                Editar perfil
+            </h1>
+            <div id="imagem">
+                <p>Foto de Perfil</p>
+                <div>
+                    <img src="" id="ImgProfile" alt="">
+                </div>
+                <br>
+                <div class="file-input">
+                    <input name="file" accept="image/jpeg, image/gif, image/pjpeg , image/png" type="file"
+                        id="real-file-input" hidden />
+                    <label for="real-file-input" class="custom-file-upload">Escolher arquivo</label>
+                    <br>
+                    <br>
+                    <div id="error-message" style="display: none; color: red;">Por favor, selecione um arquivo JPEG ou
+                        PNG.</div>
+                    <span id="file-name"></span>
+                </div>
+            </div>
+            <div id="nameInfo">
+                <p> Nome De Usuario: </p>
+                <div class="nameInfoFilho">
+                    <p id="resName"></p>
+                </div>
+            </div>
+
+            <div id="user-info">
+                <div id="email">
+                    <span id="span-email">Email</span>
+                    <br>
+                    <input value="" name="UpdateEmail" id="inputEmail" type="email">
+                </div>
+                <div id="senha">
+                    <span id="span-senha">Password</span>
+                    <br>
+                    <input value="" id="inputPassword" name="UpdatePass" type="password">
+                </div>
+                <div>
+                    <span id="textPais">Sua Região</span>
+                    <br>
+                    <select name="" id="selectRegiao">
+                        <option id="pais" value="regiao">Brasil</option>
+                    </select>
+                </div>
+                <div id="botao">
+                    <input type="button" onclick="valueStart()" id="Cancel" value="Cancel">
+                    <input type="submit" id="Save" value="Save">
+                </div>
+            </div>
+        </form>
+    </main>
+    <script src="/acc/account.js"></script>
+
+</body>
+
+</html>

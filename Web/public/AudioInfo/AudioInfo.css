@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #000000;
+    font-family: Montserrat;
+    color: white;
+}
+
+#logo {
+    width: 50px;
+    margin: 25px;
+}
+
+#sob {
+    margin-left: 25px;
+}
+
+#sob h1 {
+    margin-bottom: 10px;
+    font-size: 25pt;
+    font-weight: 600;
+}
+
+#sob p {
+    margin-bottom: 10px;
+    font-size: 15pt;
+    font-weight: 600;
+}
+
+
+
+#imagem {
+    margin-left: 25px;
+}
+
+input[type="text"] {
+    border: white 1px solid;
+    border-radius: 5px;
+    background: none;
+    color: white;
+}
+
+
+.file-input {
+    position: relative;
+    margin: 10px;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    border: #970202 2px dashed;
+    transition: background-color 0.8s ease-in-out;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.custom-file-upload:hover {
+    background-color: #970202;
+    transition: background-color 0.8s ease-in-out;
+}
+
+#file-name {
+    margin-left: 10px;
+}
+
+/* Ocultar o input de arquivo real */
+#real-file-input {
+    display: none;
+}
+
+.nameMus {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+
+.nameMus input {
+    margin: 10px 10px 10px 0;
+    height: 35px;
+    width: 250px;
+    padding: 10px;
+}
+
+.nameCre {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.nameCre input {
+    margin: 10px 10px 10px 0;
+    height: 35px;
+    width: 250px;
+    padding: 10px;
+}
+
+input[type="submit"] {
+    margin-left: 25px;
+    height: 48px;
+    width: 120px;
+    font-size: 16px;
+    background: red;
+    color: black;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 24px;
+    transition: .3s ease all;
+
+    &:hover {
+        background: #970202;
+        transform: scale(1.04);
+    }
+
+}
+
+form{
+    margin-left: 100px;
+}
+
+#demo{
+    left: 75%;
+    bottom: 30%;
+    position: fixed;
+}
+
+.card{
+    padding-top: 25px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: 0.5s;
+    width: 200px;
+    height: 290px;
+    border-radius: 15px;
+}
+.card:hover {
+    background-color: #151515;
+    transition: 0.5s;
+}
+
+
+.imgMusic {
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+}
+
+.image-button {
+    position: absolute;
+    bottom: -10px;
+    left: 65%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.5s;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.image-container:hover .image-button {
+    bottom: 10px;
+    opacity: 1;
+    transition:  0.5s;
+    transform: scale(1.1);
+}
+
+.image-button {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #B10000;
+}
+
+.resMusic {
+    margin-top: 8px;
+    font-weight: 600;
+    margin: 6px;
+}
+
+.by{
+    color: #A7A7A7;
+    font-weight: 400;
+    font-size: 10pt;
+    margin: 6px;
+    text-align: center;
+}
+
+
+.divMark{
+    position: absolute;
+}
+
+.buttonMark{
+    position: relative;
+    right: -10%;
+    cursor: pointer;
+    margin-left: 130px;
+    max-width: 50px;
+    max-height: 50px;
+    opacity: 0;
+    transition: 0.7s all ease-out;
+}
+
+
+

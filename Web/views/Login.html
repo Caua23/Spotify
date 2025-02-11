@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/login/Login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.scdn.co/i/_global/favicon.png" type="image/x-icon">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title> Login | Sound pure </title>
+</head>
+
+<body>
+
+    <video autoplay loop muted>
+        <!-- Adicione o caminho do seu vídeo MP4 no atributo src -->
+        <source src="/Assets/login.mp4" type="video/mp4">
+        
+    </video>
+    <header>
+        <img height="50px" src="/Assets/Spotify_logo_without_text.svg.png" alt="">
+    </header>
+    <section class="allLogin">
+        <img src="" alt="">
+        <h1>Faça login Para Continuar</h1>
+        <h2>Sound Pure</h2>
+        <form onsubmit="formulario(event)">
+            <!--input post-->
+            <div class="inputs">
+                <div id="res"></div>
+                <input type="email"  placeholder="Email ou username" name="emailLogin" id="inputText">
+                <br>
+                <input type="password"  placeholder="Password" name="passwordLogin" id="inputPass">
+            </div>
+            <!--input check-->
+            <div class="resto">
+                <label class="toggle-switch">
+    
+                    <input type="checkbox">
+                    <div class="toggle-switch-background">
+                        <div class="toggle-switch-handle"></div>
+                    </div>
+                </label>
+                <p>Lembre de Mim</p>
+                <label class="toggle-switch">
+            </div>
+            <!--input login-->
+            <input type="submit" id="confirm" value="Login">
+
+        </form>
+        <div class="Ou-">
+            <div class="linha"></div>Ou<div class="linha"></div>
+        </div>
+
+        <div class="final">
+            <p>Quer criar uma conta? <a href="/singUp">Crie sua conta</a></p>
+
+            <div>
+                <a class="a2" href="/reset">Redefinir Senha</a>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="/login/Login.js"></script>
+</body>
+
+</html>

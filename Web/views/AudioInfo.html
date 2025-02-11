@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="https://www.scdn.co/i/_global/favicon.png" type="image/x-icon">
+        <!--Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"
+            rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Kanit:wght@700&display=swap"
+            rel="stylesheet">
+    
+        <title>Sound Pure</title>
+        <link rel="stylesheet" href="/AudioInfo/AudioInfo.css">
+    </head>
+<body>
+    <header>
+        <a href="/Login">
+            <img id="logo" src="/Assets/Spotify_logo_without_text.svg.png" alt="">
+        </a>
+    </header>
+    
+    <main>
+        <form action="" method="post">
+
+            <div id="sob">
+                <h1>Sobre sua musica</h1>
+                <p>Adicione informações sobre sua Musica</p>
+            </div>
+            <div id="imagem">
+                <p>Adicione uma foto para musica</p>
+                <br>
+                <div class="file-input">
+                    <input name="ImgMusic" accept="image/jpeg, image/gif, image/pjpeg , image/png"  type="file"
+                        id="real-file-input" hidden />
+                    <label for="real-file-input" class="custom-file-upload">Escolher arquivo</label>
+                    <br>
+                    <br>
+                    <div id="error-message" style="display: none; color: red;">Por favor, selecione um arquivo JPEG ou
+                        PNG.</div>
+                    <span id="file-name"></span>
+                </div>
+            </div>
+            <div class="nameMus">
+                <p>Adicione um nome para musica</p>
+                <input type="text" name="NameMusic" id="NameMusic" >
+            </div>
+            <div class="nameCre">
+                <p>Nome do criador?</p>
+                <input type="text" name="NameCreator" id="NameCreator" >
+            </div>
+            <input type="submit" value="Proximo">
+        </form>
+        <aside>
+            <div id="demo">
+                <div id="card" class="card">
+                    <div class="image-container">
+                        <img id="imagemMusica" src="" class="imgMusic" alt="">
+                    </div>
+                    <p class="resMusic" id="nomeMusica"></p>
+                    <p class="by" id="by"></p>
+                    <div class="divMark">
+                        <button id="buttonMark" class="buttonMark">
+                            <img id="imgHeart" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUdJREFUSEvFVIGNwjAMtDeBSYBJeCYBJgEmgU2eTY5eZZc0TdqYF/pKVao6ufOdHat8+dEv48v/EADYisheRLg+TeVNVa/8BvAjIptaPHVlogDA3Q6W3HvYTxKXHiZwVlVPamxRBn7oiAi4svdoqwPX4iQ4+aZBgdnC7J+qus7TA0Aij+9m4tx3cDtTgksHTm9HGUS6DAAzp9KrqlLh2yJ00f5Hpy8Cmu5NXHioaq8yVfBrHq/TIkXIzEbiDDaXLBr8i4Bb+7pFRQUeZIvtoiqS7MnF831Lj/wG4IUOkRg4z/J+DNmXCLwVuTaRZOCTFi/d5GaSJfCJAi9qcqmqSlrAqwTWEVUlreCzBDUSU+kFLY6V2Wm6MGNYeL79GC/NrPx801jIakKMJvBFi7I5w5rQGs6ryTSt3fomBdGREarBX8BDFn1K9ALnPasZKSz6ZAAAAABJRU5ErkJggg==" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="/AudioInfo/AudioInfo.js"></script>
+</body>
+</html>
