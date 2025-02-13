@@ -14,22 +14,23 @@ async function formulario(event) {
   }
   async function login(email, pass) {
     try {
-      const response = await fetch("http://localhost:3001/Login", {
+      const response = await fetch("http://localhost:3001/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, senha: pass }),
+        credentials: "include"
       });
 
-      const data = await response.json(); 
+      const data = await response.json();
 
-      if (!response.ok) { 
-        res.innerHTML = data.error || "Erro desconhecido no servidor.";
+      if (!response.ok) {
+        res.innerHTML =
+          data.error ||
+          "Erro desconhecido no servidor, reporte o bug para os desenvolvedores.";
         return;
       }
-  
-      if (data.redirect) { 
+
+      if (data.redirect) {
         window.location.href = data.redirect;
       }
     } catch (error) {

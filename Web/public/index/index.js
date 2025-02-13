@@ -14,8 +14,47 @@ const playMain = document.getElementById('playMain');
 //----------------------------------------------------------------
 let inPlaylist = false;
 // let Card, imageContainer, img, ButtonPlay, i, p, p2, divMark, buttonMark, imgHeart, audioElement;
+
+
+async function token() {
+    try {
+        const token = getCookie("token"); 
+
+        if (!token) {
+            console.error("Token não encontrado.");
+            return window.location.href = "/auth/login";
+        }
+
+        const response = await fetch("http://localhost:3001/auth/jwtAuthenticate", {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`, 
+            },
+            credentials: "include"
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            return data.dados.id; 
+        } 
+        if (!response.ok) return window.location.href = "/auth/login";
+    } catch (error) {
+        console.error("Erro ao processar a solicitação:", error);
+    }
+}
+
+
+
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
 async function musicas() {
-    fetch(`http://localhost:3001/Musicas`)
+    fetch(`http://localhost:3001/musicas`)
         .then(response => response.json())
         .then(MusicData => {
             MusicData.musica.map(musica => {
@@ -207,15 +246,14 @@ function MusicSoundBar(musica) {
 }
 
 async function dataUser() {
-    let idUsuario = 1;
-    fetch(`http://localhost:3001/data/${idUsuario}`)
+    const idUsuario = await token();
+    fetch(`http://localhost:3001/user/data/${idUsuario}`)
         .then(response => response.json())
         .then(data => {
             const Picture = data.ImgProfile;
             if (Picture && Picture.length > 0) {
                 const Url = Picture[0].Url;
                 imgAccount.src = Url
-
             }
         })
 }

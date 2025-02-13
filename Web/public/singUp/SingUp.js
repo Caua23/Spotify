@@ -33,7 +33,7 @@ async function formulario(event) {
 
   async function singUp(email, senha) {
     try {
-      const response = await fetch("http://localhost:3001/intl-sucess", {
+      const response = await fetch("http://localhost:3001/auth/signUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
