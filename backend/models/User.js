@@ -9,7 +9,7 @@ const usuarios = db.sequelize.define('usuarios', {
         type: db.Sequelize.STRING(100) 
     },
     
-    emails: {
+    email: {
         type: db.Sequelize.STRING,
         unique: true
 
