@@ -1,37 +1,124 @@
 let imagemMusica = document.getElementById("imagemMusica");
 let by = document.getElementById("by");
 let nomeMusica = document.getElementById("nomeMusica");
-
-document.getElementById('real-file-input').addEventListener('change', function () {
-    let isValid = false;
-    var fileInput = this;
-    var validExtensions = ['jpeg', 'jpg', 'gif', 'pjpeg', 'png'];
-    for (var i = 0; i < fileInput.files.length; i++) {
-        var extension = fileInput.files[i].name.split('.').pop().toLowerCase();
-        if (validExtensions.indexOf(extension) !== -1) {
-            isValid = true;
-            break;
-        }
-    }
-    if (!isValid) {
-        document.getElementById('error-message').style.display = 'block';
-        // Limpar o campo de entrada de arquivo
-        fileInput.value = '';
-    } else {
-        document.getElementById('error-message').style.display = 'none';
-        var fileName = this.value.split('\\').pop();
-        document.getElementById('file-name').textContent = fileName;
-        let reader = new FileReader();
-        reader.onload = function (e) {
-            imagemMusica.src = e.target.result; // Exibir a imagem
-        };
-        reader.readAsDataURL(fileInput.files[0]);
-    }
-}
-);
-
+let nameCreator = document.getElementById("NameCreator");
 const NameMusic = document.getElementById("NameMusic");
 const NameCreator = document.getElementById("NameCreator");
+document
+  .getElementById("real-file-input")
+  .addEventListener("change", function () {
+    let isValid = false;
+    var fileInput = this;
+    var validExtensions = ["jpeg", "jpg", "gif", "pjpeg", "png"];
+    for (var i = 0; i < fileInput.files.length; i++) {
+      var extension = fileInput.files[i].name.split(".").pop().toLowerCase();
+      if (validExtensions.indexOf(extension) !== -1) {
+        isValid = true;
+        break;
+      }
+    }
+    if (!isValid) {
+      document.getElementById("error-message").style.display = "block";
+      // Limpar o campo de entrada de arquivo
+      fileInput.value = "";
+    } else {
+      document.getElementById("error-message").style.display = "none";
+      imagemMusica.style.display = "block";
+      imagemMusica.src = URL.createObjectURL(this.files[0]);
+      var fileName = this.value.split("\\").pop();
+      document.getElementById("file-name").textContent = fileName;
+    }
+  });
+
+async function token() {
+  try {
+    const token = getCookie("token");
+
+    if (!token) {
+      console.error("Token não encontrado.");
+      return (window.location.href = "/auth/login");
+    }
+
+    const response = await fetch("http://localhost:3001/auth/jwtAuthenticate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      credentials: "include",
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return data.dados.id;
+    }
+    if (!response.ok) return (window.location.href = "/auth/login");
+  } catch (error) {
+    console.error("Erro ao processar a solicitação:", error);
+  }
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}
+const inputFile = document.getElementById("real-file-input");
+
+
+  async function formulario(event) {
+    event.preventDefault();
+  
+    const id = await token(); 
+  
+    if (!id) {
+      console.error("ID do usuário não encontrado.");
+      return;
+    }
+  
+    if (inputFile.files.length === 0) {
+      console.error("Nenhum arquivo selecionado.");
+      return;
+    }
+  
+    const file = inputFile.files[0];
+    const formData = new FormData();
+  
+    // formData.append("id", id);
+    formData.append("NameMusic", NameMusic.value.trim());
+    formData.append("NameCreator", NameCreator.value.trim());
+    formData.append("ImgMusic", file);
+  
+    try {
+      const response = await fetch("http://localhost:3001/track/music", {
+        method: "POST",
+        body: formData,
+        credentials: "include",
+      });
+  
+      const data = await response.json();
+      
+      
+      if (!response.ok) {
+        console.error(data.error || "Erro no servidor.");
+        return;
+      }
+  
+      console.log("realizado com sucesso:", data);
+  
+      if (data.redirect) {
+        
+        
+        window.location.href = data.redirect;
+      }
+    } catch (error) {
+      console.error("Erro ao enviar o formulário:", error);
+    }
+  }
+  
+
+
 const imgHeart = document.getElementById("imgHeart");
 const buttonMark = document.getElementById("buttonMark");
 const Card = document.getElementById("card");

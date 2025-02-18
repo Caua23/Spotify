@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://www.scdn.co/i/_global/favicon.png"
+      type="image/x-icon"
+    />
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Kanit:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Audio/Audio.css" />
+    <title>Sound Pure</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="/Assets/Spotify_logo_without_text.svg.png" alt="Logo" />
+        </a>
+      </div>
+    </header>
+    <main>
+      <h1>Envie o arquivo da musica</h1>
+      <form onsubmit="formulario(event)">
+        <div id="arquivo">
+          <p>Adicione uma musica</p>
+          <br />
+          <div class="file-input">
+            <input
+              name="file"
+              accept="audio/mpeg, audio/wav, audio/aac, audio/ogg, audio/midi, audio/x-midi, audio/mp4, audio/webm, audio/flac"
+              type="file"
+              id="real-file-input"
+            />
+
+            
+            <label for="real-file-input" class="custom-file-upload"
+              >Escolher arquivo</label
+            >
+            <br />
+            <br />
+            <div id="error-message" style="display: none; color: red">
+              Por favor, selecione um arquivo MP3 ou WAV.
+            </div>
+            <span id="file-name"></span>
+          </div>
+        </div>
+        <input type="submit" value="Enviar" />
+      </form>
+    </main>
+    <script src="/Audio/Audio.js"></script>
+  </body>
 </html>

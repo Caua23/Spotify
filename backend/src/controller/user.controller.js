@@ -4,20 +4,27 @@ const usuarios = require("../../models/User.js");
 const Img = require("../../models/Img.js");
 const chaveSecreta = process.env.JWT_SECRET;
 const { json } = require("body-parser");
-const db = require("../../models/db.js")
+const db = require("../../models/db.js");
+const { where } = require("sequelize");
 class UserController {
   static async home(req, res) {
-    const token = req.cookies.token;
-    if (!token) {
-      return res.redirect("/init");
-    }
+    try {
+      const token =
+        req.cookies.token || req.headers.authorization?.split(" ")[1];
 
-    const dados = await UserController.jwtAuthenticate(token);
+      if (!token) {
+        return res.redirect("/init");
+      }
 
-    if (!dados) {
-      return res.redirect("/auth/login");
+      const dados = await UserController.jwtAuthenticate(token);
+
+      if (!dados) {
+        return res.redirect("/auth/login");
+      }
+      return res.redirect("/Sucess");
+    } catch (error) {
+      console.log(error);
     }
-    return res.redirect("/Sucess");
   }
 
   static async login(req, res) {
@@ -98,10 +105,11 @@ class UserController {
       const uniqueKey = uniqueName;
 
       const cadastroImg = await Img.create({
-        Name: "user_updated.png",
-        Size: 21956,
-        Key: uniqueKey,
-        Url: "/Assets/" + "user_updated.png",
+        name: "user_updated.png",
+        size: 21956,
+        key: "user_updated.png",
+        user: uniqueKey,
+        url: "/Assets/" + "user_updated.png",
       });
 
       const payload = {
@@ -134,7 +142,7 @@ class UserController {
   static async getUser(req, res) {
     const id = req.params.id;
     console.log(id);
-    
+  
     try {
       const dataEmail = await db.sequelize.query(
         "SELECT * FROM usuarios WHERE ID = ?",
@@ -145,19 +153,53 @@ class UserController {
         return res.status(404).json("Usuário não encontrado!");
       }
   
-      
-      const profilePicture = await db.sequelize.query(
-        "SELECT * FROM imgs WHERE `Key` = ?",
-        { replacements: [dataEmail[0].nome], type: db.sequelize.QueryTypes.SELECT }
+      let profilePicture = await db.sequelize.query(
+        "SELECT * FROM imgs WHERE `user` = ?",
+        {
+          replacements: [dataEmail[0].nome],
+          type: db.sequelize.QueryTypes.SELECT,
+        }
       );
-      
   
       if (profilePicture.length === 0) {
-        return res.status(404).json("Imagem de perfil não encontrada!");
+        // Se não houver imagem cadastrada, retorna manualmente a imagem padrão sem salvar no banco
+        profilePicture = [
+          {
+            name: "user_updated.png",
+            size: 21956,
+            key: "user_updated.png",
+            user: dataEmail[0].nome,
+            url: "/Assets/user_updated.png",
+          },
+        ];
+      } else if (!profilePicture[0].url) {
+        // Se já houver um registro, mas a URL estiver vazia, atualiza com a imagem padrão
+        await db.sequelize.query(
+          "UPDATE imgs SET name = ?, size = ?, `key` = ?, url = ? WHERE `user` = ?",
+          {
+            replacements: [
+              "user_updated.png",
+              21956,
+              "user_updated.png",
+              "/Assets/user_updated.png",
+              dataEmail[0].nome,
+            ],
+            type: db.sequelize.QueryTypes.UPDATE,
+          }
+        );
+  
+        // Buscar novamente a imagem após a atualização
+        profilePicture = await db.sequelize.query(
+          "SELECT * FROM imgs WHERE `user` = ?",
+          {
+            replacements: [dataEmail[0].nome],
+            type: db.sequelize.QueryTypes.SELECT,
+          }
+        );
       }
   
       const userData = {
-        dataEmail: dataEmail,
+        UserData: dataEmail,
         ImgProfile: profilePicture,
       };
   
@@ -169,53 +211,62 @@ class UserController {
     }
   }
   
+
   static async updateUser(req, res) {
-    console.log(req.file);
-    console.log(req.body);
-    const { idUpdate, UpdateEmail, UpdatePass } = req.body;
-    if (!req.file) {
-      console.log("Nenhum arquivo foi enviado.");
-    } else {
-      const { originalname: Name, size: Size, filename: Key } = req.file;
+    try {
+      const { id, email, password } = req.body;
+
+      if (!id) {
+        return res
+          .status(400)
+          .json({ error: "O ID do usuário é obrigatório." });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({ error: "Nenhum arquivo foi enviado." });
+      }
+
+      const { originalname: name, size: size, filename: key } = req.file;
+      const userData = await db.sequelize.query(
+        "SELECT nome FROM usuarios WHERE ID = ?",
+        { replacements: [id], type: db.sequelize.QueryTypes.SELECT }
+      );
+  
+      if (userData.length === 0) {
+        return res.status(404).json({ error: "Usuário não encontrado." });
+      }
+  
+      const user = userData[0].nome; 
+  
       const post = await Img.update(
-        {
-          Name,
-          Size,
-          Key,
-          Url: "/Tmp/" + Key,
-        },
-        {
-          where: {
-            id: idUpdate,
-          },
-        }
-      )
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((error) => {
-          console.error("Erro:", error);
-        });
-    }
-    const Update = await usuarios
-      .update(
-        {
-          email: UpdateEmail,
-          Password: UpdatePass,
-        },
-        {
-          where: {
-            id: idUpdate,
-          },
-        }
-      )
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error("Erro:", error);
+        { name, size, key, url: "/Tmp/" + key },
+        { where: { user } }
+      );
+
+      if (!post[0]) {
+        return res
+          .status(404)
+          .json({ error: "Imagem não encontrada ou não atualizada." });
+      }
+      
+      const update = await usuarios.update(
+        { email: email, Password: password },
+        { where: { id } }
+      );
+
+      if (!update[0]) {
+        return res
+          .status(404)
+          .json({ error: "Usuário não encontrado ou não atualizado." });
+      }
+
+      return res.status(200).json({
+        message: "Usuário e imagem atualizados com sucesso.",
+        data: { post, update },
       });
-    return res.json("Update", Update);
+    } catch (error) {
+      return res.status(500).json({ error: "Erro interno: " + error.message });
+    }
   }
 
   static async protectedRoute(req, res) {
@@ -227,11 +278,13 @@ class UserController {
         return res.status(401).json({ error: "Token não fornecido." });
       const response = await UserController.jwtAuthenticate(token);
 
-      if(!response) return res.status(400).json({ error: "Token invalido." });
-      return res.status(200).json({dados: response})
+      if (!response) return res.status(400).json({ error: "Token invalido." });
+      return res.status(200).json({ dados: response });
     } catch (err) {
       console.log(err);
-      return res.status(500).json({ error: "Erro interno por favor reportar esse Bug." });
+      return res
+        .status(500)
+        .json({ error: "Erro interno por favor reportar esse Bug." });
     }
   }
 

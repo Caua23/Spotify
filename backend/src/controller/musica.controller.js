@@ -7,9 +7,6 @@ class MusicaController {
       const musica = await db.sequelize.query("SELECT * FROM music ", {
         type: db.sequelize.QueryTypes.SELECT,
       });
-      if (musica.length === 0) {
-        return res.status(404).json("nenhuma musica!");
-      }
       const musicas = {
         musica: musica,
       };
@@ -26,7 +23,6 @@ class MusicaController {
     if (!req.file || !req.params.id) {
       return res.status(400).send("Nenhum arquivo foi enviado.");
     }
-    
     try {
       const {
         originalname: MusicName,
@@ -46,7 +42,7 @@ class MusicaController {
         }
       );
 
-      res.json(post);
+      return res.status(201).json(post);
     } catch (error) {
       console.error("Erro:", error);
       res.status(500).send("Erro ao salvar a música");
@@ -54,6 +50,8 @@ class MusicaController {
   }
 
   static async createMusic(req, res) {
+    
+    
     if (!req.file || !req.body) {
       return res.status(400).send("Dados incompletos enviados.");
     }
@@ -70,8 +68,14 @@ class MusicaController {
         NameMusic,
         NameCreator,
       });
-      res.redirect(`/track/music/audio/${musicEntry.id}`);
-      return res.json(musicEntry);
+      ;
+
+      if (!musicEntry || !musicEntry.Id) {
+        return res.status(500).send("Erro ao salvar a música: ID não gerado.");
+      }
+      
+      
+      return res.status(201).json({redirect: `/track/music/audio/${musicEntry.Id}`});
     } catch (error) {
       console.error("Erro:", error);
       res.status(500).send("Erro ao salvar a música");

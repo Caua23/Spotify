@@ -19,6 +19,6 @@ router.post(
 
 
 router.get("/account/overview", (req, res) => {
-    res.sendFile(path.join(__dirname, "../Web/", "views", "account.html"));
+    res.sendFile(path.join(__dirname, "../../../Web/", "views", "account.html"));
   });
 module.exports = router;
