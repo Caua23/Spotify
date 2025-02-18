@@ -11,19 +11,20 @@ router.get("/musicas", MusicaController.getMusica);
 
 router.post(
   "/music/audio/:id",
-  multer(MulterMusica).single("audiofile"),
+  MulterMusica.single("audiofile"),
   MusicaController.createMusicAudio
 );
 
+
 router.post(
   "/music",
-  multer(MulterMusicaImg).single("ImgMusic"),
+  MulterMusicaImg.single("ImgMusic"),
   MusicaController.createMusic
 );
 
 
 
-router.get("/music/audio", (req, res) => {
+router.get("/music/audio/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "../../../Web", "views", "Audio.html"));
 });
 router.get("/music", (req, res) => {

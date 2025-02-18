@@ -113,7 +113,7 @@ input[type="submit"] {
     font-weight: bold;
     padding: 8px 24px;
     transition: .3s ease all;
-
+    cursor: pointer;
     &:hover {
         background: #970202;
         transform: scale(1.04);
@@ -128,24 +128,36 @@ form{
 #demo{
     left: 75%;
     bottom: 30%;
-    position: fixed;
+    
+}
+main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
+
 .card{
-    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
     text-align: center;
-    box-sizing: border-box;
+    justify-content: space-around;
     transition: 0.5s;
-    width: 200px;
-    height: 290px;
+    width: 250px;
+    height: 350px;
     border-radius: 15px;
+    
+    
 }
 .card:hover {
     background-color: #151515;
     transition: 0.5s;
 }
 
-
+.names-container{
+    height: 80px;
+}
 .imgMusic {
     object-fit: cover;
     height: 150px;
@@ -154,12 +166,15 @@ form{
 }
 
 .image-container {
-    position: relative;
-    display: inline-block;
+    display: flex;
+    
+    justify-content: center;
+    
 }
 
 .image-container img {
     display: block;
+    border-radius: 20px;
 }
 
 .image-button {
@@ -203,12 +218,15 @@ form{
     text-align: center;
 }
 
-
+/* 
 .divMark{
     position: absolute;
-}
+} */
 
 .buttonMark{
+    background-color: transparent;
+    border: none;
+
     position: relative;
     right: -10%;
     cursor: pointer;

@@ -22,13 +22,13 @@
     </head>
 <body>
     <header>
-        <a href="/Login">
+        <a href="/Sucess">
             <img id="logo" src="/Assets/Spotify_logo_without_text.svg.png" alt="">
         </a>
     </header>
     
     <main>
-        <form action="" method="post">
+        <form onsubmit="formulario(event)" enctype="multipart/form-data">
 
             <div id="sob">
                 <h1>Sobre sua musica</h1>
@@ -61,11 +61,14 @@
         <aside>
             <div id="demo">
                 <div id="card" class="card">
+
                     <div class="image-container">
-                        <img id="imagemMusica" src="" class="imgMusic" alt="">
+                        <img id="imagemMusica" src="" style="display: none;" class="imgMusic" alt="">
                     </div>
-                    <p class="resMusic" id="nomeMusica"></p>
-                    <p class="by" id="by"></p>
+                    <div class="names-container">
+                        <p class="resMusic" id="nomeMusica"></p>
+                        <p class="by" id="by"></p>
+                    </div>
                     <div class="divMark">
                         <button id="buttonMark" class="buttonMark">
                             <img id="imgHeart" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUdJREFUSEvFVIGNwjAMtDeBSYBJeCYBJgEmgU2eTY5eZZc0TdqYF/pKVao6ufOdHat8+dEv48v/EADYisheRLg+TeVNVa/8BvAjIptaPHVlogDA3Q6W3HvYTxKXHiZwVlVPamxRBn7oiAi4svdoqwPX4iQ4+aZBgdnC7J+qus7TA0Aij+9m4tx3cDtTgksHTm9HGUS6DAAzp9KrqlLh2yJ00f5Hpy8Cmu5NXHioaq8yVfBrHq/TIkXIzEbiDDaXLBr8i4Bb+7pFRQUeZIvtoiqS7MnF831Lj/wG4IUOkRg4z/J+DNmXCLwVuTaRZOCTFi/d5GaSJfCJAi9qcqmqSlrAqwTWEVUlreCzBDUSU+kFLY6V2Wm6MGNYeL79GC/NrPx801jIakKMJvBFi7I5w5rQGs6ryTSt3fomBdGREarBX8BDFn1K9ALnPasZKSz6ZAAAAABJRU5ErkJggg==" alt="">

@@ -1,22 +1,25 @@
 const db = require('./db')
 
 const Img = db.sequelize.define('Img', {
-    Name: {
+    name: {
         type: db.Sequelize.STRING,
         allowNull: false,
     },
 
-    Size: {
+    size: {
         type: db.Sequelize.INTEGER,
         allowNull: false,
     },
-
-    Key: {
+    user:{
+        type: db.Sequelize.STRING,
+        allowNull: false
+    },
+    key: {
         type: db.Sequelize.STRING,
         allowNull: false,
 
     },
-    Url: {
+    url: {
         type: db.Sequelize.STRING
     },
 })

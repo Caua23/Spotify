@@ -9,8 +9,9 @@ const publicPath = path.join(__dirname, "../web/public");
 app.use(express.static(publicPath));
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser.json({ limit: "100mb" }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
-app.use(bodyParser.urlencoded({ extended: true }));
 
 //----------------------------------------------------------------\\
 const staticFolders = [
@@ -19,7 +20,7 @@ const staticFolders = [
   { route: "index", folder: "index" },
   { route: "acc", folder: "account" },
   { route: "AudioInfo", folder: "AudioInfo" },
-  { route: "Audio", folder: "Audio" },
+  { route: "audio", folder: "audio" },
 ];
 
 staticFolders.forEach(({ route, folder }) => {

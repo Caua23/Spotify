@@ -24,7 +24,7 @@
 
 <body>
     <header>
-        <a href="/Login">
+        <a href="/Sucess">
             <img id="logo" src="/Assets/Spotify_logo_without_text.svg.png" alt="">
         </a>
         <nav>
@@ -56,7 +56,7 @@
     </header>
 
     <main>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form onsubmit="formulario(event)" enctype="multipart/form-data">
             <h1>
                 Editar perfil
             </h1>
@@ -93,7 +93,7 @@
                 <div id="senha">
                     <span id="span-senha">Password</span>
                     <br>
-                    <input value="" id="inputPassword" name="UpdatePass" type="password">
+                    <input value="" id="inputPassword" name="UpdatePass" type="password" placeholder="Deseja Trocar a senha?">
                 </div>
                 <div>
                     <span id="textPais">Sua Região</span>
