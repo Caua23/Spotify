@@ -65,7 +65,9 @@ async function formulario(event) {
   if(!response.ok) {
     return console.error("Erro ao processar a solicitação:", data.error);
   }
-  console.log(data);
+
+  console.log("Sucesso:", data);
+  return (window.location.href = "/Sucess");
   
 }
 function getCookie(name) {
