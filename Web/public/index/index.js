@@ -127,10 +127,24 @@ function interacoes(Card, itens, audioElement, musica) {
   });
 
   const rangeEnd = document.getElementById("rangeEnd");
+  const volumeImg = document.getElementById("volume");
+  
   rangeEnd.addEventListener("input", () => {
     const volume = rangeEnd.value / 1200;
+  
+    if (rangeEnd.value >= 75) { 
+      volumeImg.src = "Assets/bx-volume-full.png";
+    } else if (rangeEnd.value >= 30 && rangeEnd.value < 75) { 
+      volumeImg.src = "Assets/bx-volume-low.png";
+    } else if (rangeEnd.value >= 1 && rangeEnd.value < 30) { 
+      volumeImg.src = "Assets/bx-volume.png";
+    } else if (rangeEnd.value == 0) { 
+      volumeImg.src = "Assets/bx-volume-mute.png";
+    }
+  
     audioElement.volume = volume;
   });
+  
 
   buttonMark.addEventListener("click", () => {
     togglePlaylist(imgHeart);

@@ -109,8 +109,8 @@ async function formulario(event) {
       console.error(data.error || "Erro no servidor.");
       return;
     }
-    if (data.redirect) {
-      window.location.href = data.redirect;
+    if (response.ok) {
+      window.location.reload;
     }
   } catch (error) {
     console.error("Erro ao enviar o formulário:", error);
