@@ -1,4 +1,6 @@
 node_modules
 .env
-backend/src/tmp/Som/* 
+backend/src/tmp/Som/*
+!backend/src/tmp/Som/.gitkeep
 backend/src/tmp/uploads/*
+!backend/src/tmp/uploads/.gitkeep

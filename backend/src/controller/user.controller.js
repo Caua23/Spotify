@@ -13,7 +13,7 @@ class UserController {
         req.cookies.token || req.headers.authorization?.split(" ")[1];
 
       if (!token) {
-        return res.redirect("/init");
+        return res.redirect("/auth/signUp");
       }
 
       const dados = await UserController.jwtAuthenticate(token);

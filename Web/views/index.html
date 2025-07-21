@@ -23,7 +23,7 @@
     <title>Sound Pure</title>
 </head>
 
-<body onload="carregar()">
+<body>
     <aside>
 
         <nav class="navegacao">
@@ -41,14 +41,7 @@
                     Buscar
                 </a>
             </button>
-
-
-
-
-
         </nav>
-
-
         <section>
             <div id="sectionPlaylist">
                 <button id="library">
@@ -58,13 +51,11 @@
                 <button id="plus">
                     <img src="Assets/bx-plus.png" alt="">
                 </button>
-
             </div>
             <div id="pesquisa">
                 <button onclick="toggleSearch()" id="searchPlaylist">
                     <img width="23px" height="23px" src="Assets/bx-search-alt-2.png" id="imgPesquisa" alt="">
                 </button>
-
                 <div class="classPesquisar" id="divPesquisar">
                     <input type="text" class="sumir" placeholder="Pesquisar" id="pesquisar">
                 </div>
@@ -141,59 +132,49 @@
     </main>
 
     <footer>
-        <div id="music">
-        </div>
-        <div class="mainFooter1">
-            <div id="mainFooter">
-                <div id="buttonsFooters">
-    
-                    <button id="shuffle">
-                        <i class='bx bx-transfer-alt' id="shuffleI" style='color:#ffffff;'></i>
-    
-                    </button>
-    
-                    <button id="previous">
-                        <i class='bx bx-skip-previous' style='color:#ffffff'></i>
-                    </button>
-                    <button id="PlaySoundB">
-                        <i class='bx bx-play-circle' id="PlayPause" style='color:#ffffff;'></i>
-                    </button>
-                    <button id="next">
-                        <i class='bx bx-skip-next' style='color:#ffffff'></i>
-                    </button>
-    
-                    <button id="reload">
-                        <i class='bx bx-refresh' id="refresh" style='color:#ffffff'></i>
-    
-                    </button>
-    
-                </div>
-                <div id="endFooter">
-                    <img src="Assets/bx-volume-full.png" id="volume">
-                    <input type="range" min="0" max="100" value="100" step="1" name="rangeEnd" id="rangeEnd">
+        <div class="footer-top">
+            <div id="music">
+                <img id="footerImgMusic" src="" alt="Capa da música" />
+                <div class="track-info">
+                    <p id="footerMusicName">Título da faixa</p>
+                    <p id="footerMusicAuthor">Autor</p>
                 </div>
             </div>
+            <div id="buttonsFooters">
+
+                <button id="shuffle">
+                    <i class='bx bx-transfer-alt' id="shuffleI" style='color:#ffffff;'></i>
+
+                </button>
+
+                <button id="previous">
+                    <i class='bx bx-skip-previous' style='color:#ffffff'></i>
+                </button>
+                <button id="PlaySoundB">
+                    <i class='bx bx-play-circle' id="PlayPause" style='color:#ffffff;'></i>
+                </button>
+                <button id="next">
+                    <i class='bx bx-skip-next' style='color:#ffffff'></i>
+                </button>
+
+                <button id="reload">
+                    <i class='bx bx-refresh' id="refresh" style='color:#ffffff'></i>
+
+                </button>
+
+            </div>
+            <div id="endFooter">
+                <i class='bx bx-volume-full' id="volume"></i>
+                <input type="range" id="rangeEnd" min="0" max="100" value="100">
+            </div>
+
         </div>
         <div class="progressRange">
-            <div>
-                <span id="init">00:00</span>
-            </div>
-            <div>
-                <input type="range" min="0" max="100" value="0" name="rangeSound" id="rangeSound"
-                    onchange="valueProgress">
-            </div>
-            <div>
-                <span id="end">00:00</span>
-            </div>
-            <!-- <audio src=""  id="audio"></audio> -->
+            <span id="init">00:00</span>
+            <input type="range" id="rangeSound" min="0" max="100" value="0">
+            <span id="end">00:00</span>
         </div>
-
-
     </footer>
-
-
-
-
     <script src="/index/index.js"></script>
 </body>
 
